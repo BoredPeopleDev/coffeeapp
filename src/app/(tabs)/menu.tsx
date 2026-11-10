@@ -150,7 +150,6 @@ const styles = StyleSheet.create({
     paddingTop: 35,
     paddingBottom: 35,
   },
- 
   grid: {
     flexDirection: 'row',
     flexWrap: 'wrap',

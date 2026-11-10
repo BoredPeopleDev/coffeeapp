@@ -14,7 +14,7 @@ import {
   Navigation,
   Coffee,
 } from 'lucide-react-native';
-
+// hola 
 const sucursales = [
   {
     id: 1,
