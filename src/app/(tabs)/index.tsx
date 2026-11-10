@@ -8,7 +8,7 @@ import {
   SafeAreaView,
   Animated,
 } from "react-native";
-//Fabian estuvo aqui
+//Fabian no estuvo aqui
 
 import HomeHeader from "../../components/home/HomeHeader";
 import LoyaltyCard from "../../components/home/LoyaltyCard";
