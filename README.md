@@ -1,4 +1,4 @@
-# CoffeeApp
+# CoffeeAPP
 
 Plataforma de fidelización para cafeterías.
 
