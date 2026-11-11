@@ -1,32 +1,26 @@
-
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-} from 'react-native';
-import SectionHeader from '../../components/common/SectionHeader';
-import { Gift, Coffee, Star, Lock } from 'lucide-react-native';
+import { Coffee, Gift, Lock, Star } from "lucide-react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
+import SectionHeader from "../../src/components/common/SectionHeader";
 
 const premios = [
   {
     id: 1,
-    nombre: 'Bebida gratis',
-    descripcion: 'Disfruta una bebida de nuestra selección.',
+    nombre: "Bebida gratis",
+    descripcion: "Disfruta una bebida de nuestra selección.",
     sellos: 8,
     Icon: Coffee,
   },
   {
     id: 2,
-    nombre: 'Recompensa especial',
-    descripcion: 'Una sorpresa especial para nuestros clientes.',
+    nombre: "Recompensa especial",
+    descripcion: "Una sorpresa especial para nuestros clientes.",
     sellos: 16,
     Icon: Gift,
   },
   {
     id: 3,
-    nombre: 'Cliente VIP',
-    descripcion: 'Un beneficio exclusivo para ti.',
+    nombre: "Cliente VIP",
+    descripcion: "Un beneficio exclusivo para ti.",
     sellos: 24,
     Icon: Star,
   },
@@ -36,23 +30,16 @@ export default function PremiosScreen() {
   const sellosActuales = 3;
 
   return (
-    <ScrollView
-      style={styles.container}
-      contentContainerStyle={styles.content}
-    >
-    <SectionHeader
-  title="Mis premios"
-  subtitle="Descubre las recompensas que tenemos para ti"
-/>
+    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+      <SectionHeader
+        title="Mis premios"
+        subtitle="Descubre las recompensas que tenemos para ti"
+      />
 
       <View style={styles.progressCard}>
-        <Text style={styles.progressTitle}>
-          Tu progreso actual
-        </Text>
+        <Text style={styles.progressTitle}>Tu progreso actual</Text>
 
-        <Text style={styles.progressNumber}>
-          {sellosActuales} / 8 sellos
-        </Text>
+        <Text style={styles.progressNumber}>{sellosActuales} / 8 sellos</Text>
 
         <View style={styles.progressBackground}>
           <View
@@ -68,9 +55,7 @@ export default function PremiosScreen() {
         </Text>
       </View>
 
-      <Text style={styles.sectionTitle}>
-        Catálogo de premios
-      </Text>
+      <Text style={styles.sectionTitle}>Catálogo de premios</Text>
 
       {premios.map((premio) => {
         const desbloqueado = sellosActuales >= premio.sellos;
@@ -83,17 +68,11 @@ export default function PremiosScreen() {
             </View>
 
             <View style={styles.rewardInfo}>
-              <Text style={styles.rewardTitle}>
-                {premio.nombre}
-              </Text>
+              <Text style={styles.rewardTitle}>{premio.nombre}</Text>
 
-              <Text style={styles.rewardDescription}>
-                {premio.descripcion}
-              </Text>
+              <Text style={styles.rewardDescription}>{premio.descripcion}</Text>
 
-              <Text style={styles.rewardStamps}>
-                {premio.sellos} sellos
-              </Text>
+              <Text style={styles.rewardStamps}>{premio.sellos} sellos</Text>
             </View>
 
             {desbloqueado ? (
@@ -111,7 +90,7 @@ export default function PremiosScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8F4EE',
+    backgroundColor: "#F8F4EE",
   },
   content: {
     padding: 22,
@@ -120,88 +99,88 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 27,
-    fontWeight: 'bold',
-    color: '#38251D',
+    fontWeight: "bold",
+    color: "#38251D",
   },
   subtitle: {
-    color: '#8C8178',
+    color: "#8C8178",
     fontSize: 14,
     marginTop: 7,
     marginBottom: 25,
   },
   progressCard: {
-    backgroundColor: '#38251D',
+    backgroundColor: "#38251D",
     borderRadius: 22,
     padding: 22,
     marginBottom: 30,
   },
   progressTitle: {
-    color: '#E8D5C4',
+    color: "#E8D5C4",
     fontSize: 14,
   },
   progressNumber: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     fontSize: 25,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginTop: 12,
     marginBottom: 17,
   },
   progressBackground: {
     height: 9,
-    backgroundColor: '#70594D',
+    backgroundColor: "#70594D",
     borderRadius: 10,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
   progressFill: {
     height: 9,
-    backgroundColor: '#D7AD87',
+    backgroundColor: "#D7AD87",
     borderRadius: 10,
   },
   progressDescription: {
-    color: '#E8D5C4',
+    color: "#E8D5C4",
     fontSize: 12,
     marginTop: 14,
   },
   sectionTitle: {
-    color: '#38251D',
+    color: "#38251D",
     fontSize: 19,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 16,
   },
   rewardCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: "#FFFFFF",
     borderRadius: 20,
     padding: 16,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 14,
   },
   rewardIcon: {
     width: 55,
     height: 55,
     borderRadius: 16,
-    backgroundColor: '#F4EBE1',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "#F4EBE1",
+    justifyContent: "center",
+    alignItems: "center",
     marginRight: 14,
   },
   rewardInfo: {
     flex: 1,
   },
   rewardTitle: {
-    color: '#38251D',
+    color: "#38251D",
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   rewardDescription: {
-    color: '#8C8178',
+    color: "#8C8178",
     fontSize: 12,
     marginTop: 5,
   },
   rewardStamps: {
-    color: '#A77B59',
+    color: "#A77B59",
     fontSize: 12,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginTop: 7,
   },
 });

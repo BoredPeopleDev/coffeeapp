@@ -1,38 +1,34 @@
-
-import React, { useState } from 'react';
+import { useState } from "react";
 import {
-  View,
-  Text,
-  TextInput,
-  StyleSheet,
-  TouchableOpacity,
+  Alert,
   Image,
   KeyboardAvoidingView,
-  ScrollView,
   Platform,
-  Alert,
-} from 'react-native';
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
-import { LinearGradient } from 'expo-linear-gradient';
-import { useRouter } from 'expo-router';
+import { LinearGradient } from "expo-linear-gradient";
+import { useRouter } from "expo-router";
 
 export default function LoginScreen() {
   const router = useRouter();
 
-  const [correo, setCorreo] = useState('');
-  const [password, setPassword] = useState('');
+  const [correo, setCorreo] = useState("");
+  const [password, setPassword] = useState("");
   const [mostrarPassword, setMostrarPassword] = useState(false);
 
   // INICIO DE SESIÓN DE PRUEBA
   const iniciarSesion = () => {
-    const correoDemo = 'demo@cafilovers.com';
-    const passwordDemo = 'Cafi1234';
+    const correoDemo = "demo@cafilovers.com";
+    const passwordDemo = "Cafi1234";
 
     if (!correo.trim() || !password.trim()) {
-      Alert.alert(
-        'Campos incompletos',
-        'Ingresa tu correo y contraseña.'
-      );
+      Alert.alert("Campos incompletos", "Ingresa tu correo y contraseña.");
       return;
     }
 
@@ -41,49 +37,46 @@ export default function LoginScreen() {
       password === passwordDemo
     ) {
       Alert.alert(
-        '¡Bienvenido a Cafilovers!',
-        'Has iniciado sesión correctamente.',
+        "¡Bienvenido a Cafilovers!",
+        "Has iniciado sesión correctamente.",
         [
           {
-            text: 'Continuar',
-            onPress: () => router.replace('/(tabs)'),
+            text: "Continuar",
+            onPress: () => router.replace("/(tabs)"),
           },
-        ]
+        ],
       );
     } else {
       Alert.alert(
-        'Datos incorrectos',
-        'El correo o la contraseña no son correctos.'
+        "Datos incorrectos",
+        "El correo o la contraseña no son correctos.",
       );
     }
   };
 
   return (
     <LinearGradient
-      colors={['#001C13', '#00452D', '#00251A']}
+      colors={["#001C13", "#00452D", "#00251A"]}
       style={styles.container}
     >
       <KeyboardAvoidingView
         style={{ flex: 1 }}
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        behavior={Platform.OS === "ios" ? "padding" : undefined}
       >
         <ScrollView
           contentContainerStyle={styles.scrollContent}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
         >
-
           {/* LOGO */}
           <Image
-            source={require('../../../assets/logo-navidad.png')}
+            source={require("../../assets/logo-navidad.png")}
             style={styles.logo}
             resizeMode="contain"
           />
 
           {/* ENCABEZADO */}
-          <Text style={styles.title}>
-            ¡Qué gusto tenerte de vuelta!
-          </Text>
+          <Text style={styles.title}>¡Qué gusto tenerte de vuelta!</Text>
 
           <Text style={styles.subtitle}>
             Inicia sesión y disfruta tus recompensas.
@@ -91,11 +84,8 @@ export default function LoginScreen() {
 
           {/* FORMULARIO */}
           <View style={styles.form}>
-
             {/* CORREO */}
-            <Text style={styles.label}>
-              Correo electrónico
-            </Text>
+            <Text style={styles.label}>Correo electrónico</Text>
 
             <TextInput
               style={styles.input}
@@ -109,9 +99,7 @@ export default function LoginScreen() {
             />
 
             {/* CONTRASEÑA */}
-            <Text style={styles.label}>
-              Contraseña
-            </Text>
+            <Text style={styles.label}>Contraseña</Text>
 
             <View style={styles.passwordContainer}>
               <TextInput
@@ -128,7 +116,7 @@ export default function LoginScreen() {
                 onPress={() => setMostrarPassword(!mostrarPassword)}
               >
                 <Text style={styles.showPassword}>
-                  {mostrarPassword ? 'Ocultar' : 'Ver'}
+                  {mostrarPassword ? "Ocultar" : "Ver"}
                 </Text>
               </TouchableOpacity>
             </View>
@@ -138,14 +126,12 @@ export default function LoginScreen() {
               style={styles.forgotButton}
               onPress={() =>
                 Alert.alert(
-                  'Recuperar contraseña',
-                  'Esta función estará disponible próximamente.'
+                  "Recuperar contraseña",
+                  "Esta función estará disponible próximamente.",
                 )
               }
             >
-              <Text style={styles.forgotText}>
-                ¿Olvidaste tu contraseña?
-              </Text>
+              <Text style={styles.forgotText}>¿Olvidaste tu contraseña?</Text>
             </TouchableOpacity>
 
             {/* INICIAR SESIÓN */}
@@ -153,43 +139,29 @@ export default function LoginScreen() {
               style={styles.loginButton}
               onPress={iniciarSesion}
             >
-              <Text style={styles.loginButtonText}>
-                INICIAR SESIÓN
-              </Text>
+              <Text style={styles.loginButtonText}>INICIAR SESIÓN</Text>
             </TouchableOpacity>
 
             {/* REGISTRO */}
             <View style={styles.registerContainer}>
-              <Text style={styles.registerText}>
-                ¿No tienes una cuenta?
-              </Text>
+              <Text style={styles.registerText}>¿No tienes una cuenta?</Text>
 
-              <TouchableOpacity
-                onPress={() => router.push('/register')}
-              >
-                <Text style={styles.registerLink}>
-                  Regístrate aquí
-                </Text>
+              <TouchableOpacity onPress={() => router.push("/register")}>
+                <Text style={styles.registerLink}>Regístrate aquí</Text>
               </TouchableOpacity>
             </View>
-
           </View>
 
           {/* VOLVER */}
           <TouchableOpacity
             style={styles.backButton}
-            onPress={() => router.replace('/welcome')}
+            onPress={() => router.replace("/welcome")}
           >
-            <Text style={styles.backText}>
-              ← Volver al inicio
-            </Text>
+            <Text style={styles.backText}>← Volver al inicio</Text>
           </TouchableOpacity>
 
           {/* FOOTER */}
-          <Text style={styles.footer}>
-            CAFILOVERS · HECHO PARA DISFRUTAR
-          </Text>
-
+          <Text style={styles.footer}>CAFILOVERS · HECHO PARA DISFRUTAR</Text>
         </ScrollView>
       </KeyboardAvoidingView>
     </LinearGradient>
@@ -204,7 +176,7 @@ const styles = StyleSheet.create({
 
   scrollContent: {
     flexGrow: 1,
-    alignItems: 'center',
+    alignItems: "center",
     paddingHorizontal: 28,
     paddingTop: 45,
     paddingBottom: 30,
@@ -217,106 +189,106 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     fontSize: 23,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    fontWeight: "bold",
+    textAlign: "center",
   },
 
   subtitle: {
-    color: '#D8E9DF',
+    color: "#D8E9DF",
     fontSize: 14,
-    textAlign: 'center',
+    textAlign: "center",
     marginTop: 10,
     marginBottom: 35,
   },
 
   form: {
-    width: '100%',
+    width: "100%",
   },
 
   label: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     fontSize: 14,
-    fontWeight: '600',
+    fontWeight: "600",
     marginBottom: 9,
     marginTop: 15,
   },
 
   input: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: "#FFFFFF",
     borderRadius: 13,
     height: 54,
     paddingHorizontal: 16,
     fontSize: 15,
-    color: '#38251D',
+    color: "#38251D",
   },
 
   passwordContainer: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: "#FFFFFF",
     borderRadius: 13,
     height: 54,
     paddingHorizontal: 16,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
 
   passwordInput: {
     flex: 1,
     fontSize: 15,
-    color: '#38251D',
+    color: "#38251D",
   },
 
   showPassword: {
-    color: '#B51F2B',
-    fontWeight: 'bold',
+    color: "#B51F2B",
+    fontWeight: "bold",
     padding: 8,
   },
 
   forgotButton: {
-    alignSelf: 'flex-end',
+    alignSelf: "flex-end",
     marginTop: 15,
     marginBottom: 30,
   },
 
   forgotText: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     fontSize: 13,
-    textDecorationLine: 'underline',
+    textDecorationLine: "underline",
   },
 
   loginButton: {
-    backgroundColor: '#B51F2B',
+    backgroundColor: "#B51F2B",
     borderRadius: 30,
     paddingVertical: 17,
-    alignItems: 'center',
+    alignItems: "center",
   },
 
   loginButtonText: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     fontSize: 15,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     letterSpacing: 1,
   },
 
   registerContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
+    flexDirection: "row",
+    justifyContent: "center",
+    flexWrap: "wrap",
     marginTop: 28,
     gap: 5,
   },
 
   registerText: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     fontSize: 13,
   },
 
   registerLink: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     fontSize: 13,
-    fontWeight: 'bold',
-    textDecorationLine: 'underline',
+    fontWeight: "bold",
+    textDecorationLine: "underline",
   },
 
   backButton: {
@@ -325,15 +297,15 @@ const styles = StyleSheet.create({
   },
 
   backText: {
-    color: '#D8E9DF',
+    color: "#D8E9DF",
     fontSize: 14,
   },
 
   footer: {
-    color: '#B8D5C6',
+    color: "#B8D5C6",
     fontSize: 10,
     letterSpacing: 2,
     marginTop: 30,
-    textAlign: 'center',
+    textAlign: "center",
   },
 });

@@ -1,20 +1,19 @@
-
-import React, { useEffect, useRef, useState } from 'react';
+import { LinearGradient } from "expo-linear-gradient";
+import { useRouter } from "expo-router";
+import { Snowflake } from "lucide-react-native";
+import { useEffect, useRef, useState } from "react";
 import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
   Animated,
-  TouchableOpacity,
   Dimensions,
+  Image,
   StatusBar,
-} from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import { Snowflake } from 'lucide-react-native';
-import { useRouter } from 'expo-router';
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
-const { width, height } = Dimensions.get('window');
+const { width, height } = Dimensions.get("window");
 
 export default function WelcomeScreen() {
   const router = useRouter();
@@ -27,7 +26,7 @@ export default function WelcomeScreen() {
   const [showButtons, setShowButtons] = useState(false);
 
   const snowflakes = useRef(
-    Array.from({ length: 12 }, () => new Animated.Value(-40))
+    Array.from({ length: 12 }, () => new Animated.Value(-40)),
   ).current;
 
   useEffect(() => {
@@ -74,21 +73,21 @@ export default function WelcomeScreen() {
             duration: 0,
             useNativeDriver: true,
           }),
-        ])
-      )
+        ]),
+      ),
     );
 
-    animations.forEach(animation => animation.start());
+    animations.forEach((animation) => animation.start());
 
     return () => {
       clearTimeout(timer);
-      animations.forEach(animation => animation.stop());
+      animations.forEach((animation) => animation.stop());
     };
   }, []);
 
   return (
     <LinearGradient
-      colors={['#001C13', '#00452D', '#00251A']}
+      colors={["#001C13", "#00452D", "#00251A"]}
       style={styles.container}
     >
       <StatusBar barStyle="light-content" />
@@ -106,10 +105,7 @@ export default function WelcomeScreen() {
               },
             ]}
           >
-            <Snowflake
-              color="#D8F5EA"
-              size={14 + (index % 3) * 5}
-            />
+            <Snowflake color="#D8F5EA" size={14 + (index % 3) * 5} />
           </Animated.View>
         ))}
       </View>
@@ -126,7 +122,7 @@ export default function WelcomeScreen() {
           ]}
         >
           <Image
-            source={require('../../../assets/logo-navidad.png')}
+            source={require("../../assets/logo-navidad.png")}
             style={styles.logo}
             resizeMode="contain"
           />
@@ -138,9 +134,7 @@ export default function WelcomeScreen() {
             transform: [{ scale: logoScale }],
           }}
         >
-          <Text style={styles.welcome}>
-            ¡BIENVENIDO!
-          </Text>
+          <Text style={styles.welcome}>¡BIENVENIDO!</Text>
           <Text style={styles.subtitle}>
             Tu café, tus momentos, tus recompensas.
           </Text>
@@ -158,27 +152,21 @@ export default function WelcomeScreen() {
           >
             <TouchableOpacity
               style={styles.loginButton}
-              onPress={() => router.push('/login')}
+              onPress={() => router.push("/login")}
             >
-              <Text style={styles.loginText}>
-                INICIAR SESIÓN
-              </Text>
+              <Text style={styles.loginText}>INICIAR SESIÓN</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               style={styles.registerButton}
-              onPress={() => router.push('/register')}
+              onPress={() => router.push("/register")}
             >
-              <Text style={styles.registerText}>
-                CREAR CUENTA
-              </Text>
+              <Text style={styles.registerText}>CREAR CUENTA</Text>
             </TouchableOpacity>
           </Animated.View>
         )}
 
-        <Text style={styles.footer}>
-          CAFILOVERS · HECHO PARA DISFRUTAR
-        </Text>
+        <Text style={styles.footer}>CAFILOVERS · HECHO PARA DISFRUTAR</Text>
       </View>
     </LinearGradient>
   );
@@ -188,22 +176,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-snowLayer: {
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: 0,
-  overflow: 'hidden',
-},
+  snowLayer: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    overflow: "hidden",
+  },
   snowflake: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
   },
   content: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     paddingHorizontal: 30,
   },
   logoContainer: {
@@ -212,57 +200,57 @@ snowLayer: {
     marginBottom: 10,
   },
   logo: {
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
   },
   welcome: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     fontSize: 29,
-    fontWeight: '900',
-    textAlign: 'center',
+    fontWeight: "900",
+    textAlign: "center",
     letterSpacing: 3,
   },
   subtitle: {
-    color: '#D8E9DF',
+    color: "#D8E9DF",
     fontSize: 14,
-    textAlign: 'center',
+    textAlign: "center",
     marginTop: 12,
     marginBottom: 35,
   },
   buttonsContainer: {
-    width: '100%',
+    width: "100%",
     gap: 15,
   },
   loginButton: {
-    backgroundColor: '#B51F2B',
+    backgroundColor: "#B51F2B",
     paddingVertical: 17,
     borderRadius: 30,
-    alignItems: 'center',
+    alignItems: "center",
   },
   loginText: {
-    color: '#FFFFFF',
-    fontWeight: 'bold',
+    color: "#FFFFFF",
+    fontWeight: "bold",
     fontSize: 15,
     letterSpacing: 1,
   },
   registerButton: {
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
     borderWidth: 2,
-    borderColor: '#FFFFFF',
+    borderColor: "#FFFFFF",
     paddingVertical: 15,
     borderRadius: 30,
-    alignItems: 'center',
+    alignItems: "center",
   },
   registerText: {
-    color: '#FFFFFF',
-    fontWeight: 'bold',
+    color: "#FFFFFF",
+    fontWeight: "bold",
     fontSize: 15,
     letterSpacing: 1,
   },
   footer: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 35,
-    color: '#B8D5C6',
+    color: "#B8D5C6",
     fontSize: 10,
     letterSpacing: 2,
   },

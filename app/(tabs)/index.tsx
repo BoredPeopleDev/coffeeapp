@@ -1,19 +1,19 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 import {
-  View,
-  Text,
+  Animated,
+  SafeAreaView,
   ScrollView,
   StyleSheet,
-  SafeAreaView,
-  Animated,
+  Text,
+  View,
 } from "react-native";
 //Fabian no estuvo aqui
 
-import HomeHeader from "../../components/home/HomeHeader";
-import LoyaltyCard from "../../components/home/LoyaltyCard";
-import PromotionCard from "../../components/home/PromotionCard";
-import LocationCard from "../../components/home/LocationCard";
+import HomeHeader from "../../src/features/home/ui/HomeHeader";
+import LocationCard from "../../src/features/home/ui/LocationCard";
+import LoyaltyCard from "../../src/features/loyalty/ui/LoyaltyCard";
+import PromotionCard from "../../src/features/promotions/ui/PromotionCard";
 
 export default function HomeScreen() {
   const snowY = useRef(

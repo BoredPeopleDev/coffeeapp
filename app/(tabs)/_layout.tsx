@@ -1,16 +1,8 @@
+import { Tabs } from "expo-router";
+import { Coffee, Gift, House, MapPin, QrCode, User } from "lucide-react-native";
+import { View } from "react-native";
 
-import { Tabs } from 'expo-router';
-import { View } from 'react-native';
-import {
-  House,
-  Coffee,
-  MapPin,
-  QrCode,
-  Gift,
-  User,
-} from 'lucide-react-native';
-
-import Snowfall from '../../components/common/Snowfall';
+import Snowfall from "../../src/components/common/Snowfall";
 
 export default function TabsLayout() {
   return (
@@ -19,24 +11,24 @@ export default function TabsLayout() {
         screenOptions={{
           headerShown: false,
           tabBarStyle: {
-            backgroundColor: '#003F26',
+            backgroundColor: "#003F26",
             height: 68,
             paddingBottom: 8,
             paddingTop: 8,
             borderTopWidth: 0,
           },
-          tabBarActiveTintColor: '#E31B23',
-          tabBarInactiveTintColor: '#FFFFFF',
+          tabBarActiveTintColor: "#E31B23",
+          tabBarInactiveTintColor: "#FFFFFF",
           tabBarLabelStyle: {
             fontSize: 11,
-            fontWeight: '600',
+            fontWeight: "600",
           },
         }}
       >
         <Tabs.Screen
           name="index"
           options={{
-            title: 'Inicio',
+            title: "Inicio",
             tabBarIcon: ({ color, size }) => (
               <House color={color} size={size} />
             ),
@@ -46,7 +38,7 @@ export default function TabsLayout() {
         <Tabs.Screen
           name="menu"
           options={{
-            title: 'Menú',
+            title: "Menú",
             tabBarIcon: ({ color, size }) => (
               <Coffee color={color} size={size} />
             ),
@@ -56,7 +48,7 @@ export default function TabsLayout() {
         <Tabs.Screen
           name="cafeterias"
           options={{
-            title: 'Cafeterías',
+            title: "Cafeterías",
             tabBarIcon: ({ color, size }) => (
               <MapPin color={color} size={size} />
             ),
@@ -66,7 +58,7 @@ export default function TabsLayout() {
         <Tabs.Screen
           name="qr"
           options={{
-            title: 'Mi QR',
+            title: "Mi QR",
             tabBarIcon: ({ color, size }) => (
               <QrCode color={color} size={size} />
             ),
@@ -76,20 +68,16 @@ export default function TabsLayout() {
         <Tabs.Screen
           name="premios"
           options={{
-            title: 'Premios',
-            tabBarIcon: ({ color, size }) => (
-              <Gift color={color} size={size} />
-            ),
+            title: "Premios",
+            tabBarIcon: ({ color, size }) => <Gift color={color} size={size} />,
           }}
         />
 
         <Tabs.Screen
           name="perfil"
           options={{
-            title: 'Perfil',
-            tabBarIcon: ({ color, size }) => (
-              <User color={color} size={size} />
-            ),
+            title: "Perfil",
+            tabBarIcon: ({ color, size }) => <User color={color} size={size} />,
           }}
         />
       </Tabs>

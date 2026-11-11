@@ -1,17 +1,14 @@
-
-import { useRef, useState } from 'react';
-
+import { Coffee, RotateCcw, Snowflake } from "lucide-react-native";
+import { useRef, useState } from "react";
 import {
-  View,
-  Text,
-  StyleSheet,
-  Pressable,
-  Image,
   Animated,
   Easing,
-} from 'react-native';
-
-import { Coffee, RotateCcw, Snowflake } from 'lucide-react-native';
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 
 export default function LoyaltyCard() {
   const totalSellos = 8;
@@ -36,33 +33,30 @@ export default function LoyaltyCard() {
 
   const giroImagen = giro.interpolate({
     inputRange: [0, 180],
-    outputRange: ['0deg', '180deg'],
+    outputRange: ["0deg", "180deg"],
   });
 
   const giroSellos = giro.interpolate({
     inputRange: [0, 180],
-    outputRange: ['180deg', '360deg'],
+    outputRange: ["180deg", "360deg"],
   });
 
   return (
     <Pressable onPress={voltearTarjeta}>
       <View style={styles.cardContainer}>
-
         {/* PRIMERA CARA: LOGO NAVIDEÑO */}
         <Animated.View
           style={[
             styles.card,
             styles.front,
             {
-              transform: [
-                { perspective: 1000 },
-                { rotateY: giroImagen },
-              ],
+              transform: [{ perspective: 1000 }, { rotateY: giroImagen }],
             },
           ]}
         >
           <Image
-            source={require('../../../assets/card-navidad.png')}
+            // CORRECCIÓN ARQUITECTÓNICA: 4 niveles hacia atrás desde src/features/loyalty/ui/
+            source={require("../../../../assets/card-navidad.png")}
             style={styles.backImage}
             resizeMode="cover"
           />
@@ -74,21 +68,15 @@ export default function LoyaltyCard() {
             styles.card,
             styles.stampsCard,
             {
-              transform: [
-                { perspective: 1000 },
-                { rotateY: giroSellos },
-              ],
+              transform: [{ perspective: 1000 }, { rotateY: giroSellos }],
             },
           ]}
         >
           <View style={styles.header}>
             <View>
               <Text style={styles.brand}>CAFILOVERS</Text>
-              <Text style={styles.title}>
-                Tu próxima recompensa
-              </Text>
+              <Text style={styles.title}>Tu próxima recompensa</Text>
             </View>
-
             <Coffee color="#E8D5C4" size={38} />
           </View>
 
@@ -103,36 +91,28 @@ export default function LoyaltyCard() {
               return (
                 <View
                   key={index}
-                  style={[
-                    styles.stamp,
-                    completado && styles.stampCompleted,
-                  ]}
+                  style={[styles.stamp, completado && styles.stampCompleted]}
                 >
-                 {completado ? (
-  <Snowflake color="#FFFFFF" size={23} />
-) : (
-  <Text style={styles.stampNumber}>
-    {index + 1}
-  </Text>
-)}
+                  {completado ? (
+                    <Snowflake color="#FFFFFF" size={23} />
+                  ) : (
+                    <Text style={styles.stampNumber}>{index + 1}</Text>
+                  )}
                 </View>
               );
             })}
           </View>
 
-          <Text style={styles.message}>
-            ¡Sigue acumulando visitas!
-          </Text>
+          <Text style={styles.message}>¡Sigue acumulando visitas!</Text>
         </Animated.View>
-
       </View>
 
       <View style={styles.flipHint}>
         <RotateCcw color="#A77B59" size={15} />
         <Text style={styles.hintText}>
           {volteada
-            ? 'Toca para ver tu tarjeta navideña'
-            : 'Toca para descubrir tus sellos'}
+            ? "Toca para ver tu tarjeta navideña"
+            : "Toca para descubrir tus sellos"}
         </Text>
       </View>
     </Pressable>
@@ -144,99 +124,84 @@ const styles = StyleSheet.create({
     height: 245,
     marginBottom: 5,
   },
-
   card: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
+    position: "absolute",
+    width: "100%",
+    height: "100%",
     borderRadius: 25,
-    overflow: 'hidden',
-    backfaceVisibility: 'hidden',
+    overflow: "hidden",
+    backfaceVisibility: "hidden",
   },
-
   front: {
-    backgroundColor: '#075337',
+    backgroundColor: "#075337",
   },
-
   backImage: {
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
   },
-
   stampsCard: {
-    backgroundColor: '#075337',
+    backgroundColor: "#075337",
     padding: 24,
   },
-
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
-
   brand: {
-    color: '#E8D5C4',
+    color: "#E8D5C4",
     fontSize: 12,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     letterSpacing: 3,
     marginBottom: 8,
   },
-
   title: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     fontSize: 21,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
-
   progress: {
-    color: '#E8D5C4',
+    color: "#E8D5C4",
     fontSize: 16,
     marginTop: 28,
     marginBottom: 18,
   },
-
   stampsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
-
   stamp: {
     width: 39,
     height: 39,
     borderRadius: 20,
     borderWidth: 1.5,
-    borderColor: '#E8D5C4',
-    alignItems: 'center',
-    justifyContent: 'center',
+    borderColor: "#E8D5C4",
+    alignItems: "center",
+    justifyContent: "center",
   },
-
   stampCompleted: {
-    backgroundColor: '#ff0000',
-    borderColor: '#ff6f00',
+    backgroundColor: "#ff0000",
+    borderColor: "#ff6f00",
   },
-
   stampNumber: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     fontSize: 14,
   },
-
   message: {
-    color: '#E8D5C4',
+    color: "#E8D5C4",
     fontSize: 14,
     marginTop: 24,
   },
-
   flipHint: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     gap: 7,
     marginTop: 10,
     marginBottom: 20,
   },
-
   hintText: {
-    color: '#8C8178',
+    color: "#8C8178",
     fontSize: 12,
   },
 });
