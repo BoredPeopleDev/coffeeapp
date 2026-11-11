@@ -10,6 +10,16 @@ export default function RootLayout() {
           backgroundColor: '#F8F4EE',
         },
       }}
-    />
+    >
+      <Stack.Screen
+        name="(auth)"
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="(tabs)"
+        options={{ headerShown: false }}
+      />
+    </Stack>
   );
 }
