@@ -14,6 +14,8 @@ import HomeHeader from "../../src/features/home/ui/HomeHeader";
 import LocationCard from "../../src/features/home/ui/LocationCard";
 import LoyaltyCard from "../../src/features/loyalty/ui/LoyaltyCard";
 import PromotionCard from "../../src/features/promotions/ui/PromotionCard";
+import ClientsOfMonth from "../../src/features/home/ui/ClientesOfMonth";
+import SeasonalPromotions from "../../src/features/promotions/ui/SeasonalPromotions";
 
 export default function HomeScreen() {
   const snowY = useRef(
@@ -53,6 +55,12 @@ export default function HomeScreen() {
 
           {/* Tarjeta de fidelización */}
           <LoyaltyCard />
+
+          {/* Promociones de temporada */}
+          <SeasonalPromotions />
+          
+          {/* Clientes del mes */}
+          <ClientsOfMonth />
 
           {/* Promociones */}
           <View style={styles.sectionHeader}>
