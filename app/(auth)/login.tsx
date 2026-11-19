@@ -22,37 +22,63 @@ export default function LoginScreen() {
   const [password, setPassword] = useState("");
   const [mostrarPassword, setMostrarPassword] = useState(false);
 
+ 
   // INICIO DE SESIÓN DE PRUEBA
   const iniciarSesion = () => {
-    const correoDemo = "demo@cafilovers.com";
-    const passwordDemo = "Cafi1234";
+    const correoCliente = "demo@cafilovers.com";
+    const passwordCliente = "Cafi1234";
 
-    if (!correo.trim() || !password.trim()) {
-      Alert.alert("Campos incompletos", "Ingresa tu correo y contraseña.");
+    const correoEmpleado = "empleado@cafilovers.com";
+    const passwordEmpleado = "Empleado123";
+
+    // NUEVO ACCESO ADMINISTRADOR
+    const correoAdmin = "admin@cafilovers.com";
+    const passwordAdmin = "Admin1234";
+
+    const correoIngresado = correo.trim().toLowerCase();
+
+    if (!correoIngresado || !password.trim()) {
+      Alert.alert(
+        "Campos incompletos",
+        "Ingresa tu correo y contraseña."
+      );
       return;
     }
 
+    // ACCESO CLIENTE
     if (
-      correo.trim().toLowerCase() === correoDemo &&
-      password === passwordDemo
+      correoIngresado === correoCliente &&
+      password === passwordCliente
     ) {
-      Alert.alert(
-        "¡Bienvenido a Cafilovers!",
-        "Has iniciado sesión correctamente.",
-        [
-          {
-            text: "Continuar",
-            onPress: () => router.replace("/(tabs)"),
-          },
-        ],
-      );
-    } else {
-      Alert.alert(
-        "Datos incorrectos",
-        "El correo o la contraseña no son correctos.",
-      );
+      router.replace("/(tabs)");
+      return;
     }
+
+    // ACCESO EMPLEADO
+    if (
+      correoIngresado === correoEmpleado &&
+      password === passwordEmpleado
+    ) {
+      router.replace("/(employee)");
+      return;
+    }
+
+    // ACCESO ADMINISTRADOR
+    if (
+      correoIngresado === correoAdmin &&
+      password === passwordAdmin
+    ) {
+      router.replace("/(admin)");
+      return;
+    }
+
+    Alert.alert(
+      "Datos incorrectos",
+      "El correo o la contraseña no son correctos."
+    );
   };
+
+
 
   return (
     <LinearGradient
