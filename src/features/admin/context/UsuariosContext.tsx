@@ -11,8 +11,21 @@ import {
   usuariosDemo,
 } from "../data/usuariosDemo";
 
+// HISTORIAL DE MOVIMIENTOS
+export interface MovimientoUsuario {
+  id: string;
+  usuarioId: string;
+  nombreUsuario: string;
+  accion: "Activación" | "Desactivación";
+  motivo: string;
+  realizadoPor: string;
+  sucursal: string;
+  fecha: string;
+}
+
 interface UsuariosContextType {
   usuarios: Usuario[];
+  movimientos: MovimientoUsuario[];
 
   actualizarUsuario: (
     id: string,
@@ -20,6 +33,14 @@ interface UsuariosContextType {
   ) => void;
 
   agregarUsuario: (usuario: Usuario) => void;
+
+  registrarCambioEstado: (
+    id: string,
+    nuevoEstado: "Activo" | "Inactivo",
+    motivo: string,
+    realizadoPor: string,
+    sucursal: string
+  ) => void;
 }
 
 const UsuariosContext = createContext<
@@ -37,6 +58,11 @@ export function UsuariosProvider({
     usuariosDemo
   );
 
+  const [movimientos, setMovimientos] = useState<
+    MovimientoUsuario[]
+  >([]);
+
+  // ACTUALIZAR INFORMACIÓN DEL USUARIO
   const actualizarUsuario = (
     id: string,
     cambios: Partial<Usuario>
@@ -50,6 +76,7 @@ export function UsuariosProvider({
     );
   };
 
+  // AGREGAR USUARIO
   const agregarUsuario = (usuario: Usuario) => {
     setUsuarios((actuales) => [
       ...actuales,
@@ -57,12 +84,58 @@ export function UsuariosProvider({
     ]);
   };
 
+  // REGISTRAR ACTIVACIÓN O DESACTIVACIÓN
+  const registrarCambioEstado = (
+    id: string,
+    nuevoEstado: "Activo" | "Inactivo",
+    motivo: string,
+    realizadoPor: string,
+    sucursal: string
+  ) => {
+    const usuario = usuarios.find(
+      (item) => item.id === id
+    );
+
+    if (!usuario || usuario.estado === nuevoEstado) {
+      return;
+    }
+
+    const accion =
+      nuevoEstado === "Activo"
+        ? "Activación"
+        : "Desactivación";
+
+    const movimiento: MovimientoUsuario = {
+      id: `${Date.now()}-${id}`,
+      usuarioId: id,
+      nombreUsuario: usuario.nombre,
+      accion,
+      motivo,
+      realizadoPor,
+      sucursal,
+      fecha: new Date().toISOString(),
+    };
+
+    // ACTUALIZAR ESTADO DEL CLIENTE
+    actualizarUsuario(id, {
+      estado: nuevoEstado,
+    });
+
+    // GUARDAR MOVIMIENTO EN EL HISTORIAL
+    setMovimientos((actuales) => [
+      movimiento,
+      ...actuales,
+    ]);
+  };
+
   return (
     <UsuariosContext.Provider
       value={{
         usuarios,
+        movimientos,
         actualizarUsuario,
         agregarUsuario,
+        registrarCambioEstado,
       }}
     >
       {children}

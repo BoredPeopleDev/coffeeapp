@@ -1,26 +1,9 @@
 
 import React from "react";
-import {
-  View,
-  Text,
-  ScrollView,
-  StyleSheet,
-  Pressable,
-  StatusBar,
+import { View, Text, ScrollView, StyleSheet, Pressable, StatusBar,
 } from "react-native";
 
-import {
-  Coffee,
-  Users,
-  Gift,
-  Store,
-  ChartNoAxesCombined,
-  CalendarDays,
-  ChevronRight,
-  Menu,
-  Bell,
-  TrendingUp,
-  ClipboardList,
+import {Coffee,Users,Gift, Store, ChartNoAxesCombined, CalendarDays, ChevronRight,Menu, Bell, TrendingUp, ClipboardList, QrCode,BellRing
 } from "lucide-react-native";
 
 import { useRouter } from "expo-router";
@@ -69,11 +52,28 @@ const branches = [
 
 const modules = [
   {
+  title: "Notificaciones",
+  subtitle: "Promociones y grupos de difusión",
+  icon: BellRing,
+  route: "/(admin)/notificaciones",
+},
+  {
     title: "Usuarios",
     subtitle: "Gestionar clientes",
     icon: Users,
     route: "/(admin)/usuarios",
+  },  {
+    title: "Historial de usuarios",
+    subtitle: "Consultar activaciones y desactivaciones",
+    icon: ClipboardList,
+    route: "/(admin)/historial-usuarios",
   },
+  {
+  title: "Historial de escaneos QR",
+  subtitle: "Consultar sellos otorgados y rechazados",
+  icon: QrCode,
+  route: "/(admin)/historial-escaneos",
+},
   {
     title: "Cafeterías",
     subtitle: "Administrar sucursales",

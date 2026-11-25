@@ -4,39 +4,48 @@
     "slug": "cafiapp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/logo-navidad.png",
     "scheme": "cafiapp",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "icon": "./assets/logo-navidad.png"
     },
     "android": {
-      "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/images/android-icon-foreground.png",
-        "backgroundImage": "./assets/images/android-icon-background.png",
-        "monochromeImage": "./assets/images/android-icon-monochrome.png"
-      },
-      "predictiveBackGestureEnabled": false
+    "adaptiveIcon": {
+  "backgroundColor": "#E6F4FE",
+  "foregroundImage": "./assets/logo-navidad.png"
+},
+      "predictiveBackGestureEnabled": false,
+      "package": "com.lilgarcia.cafiapp"
     },
     "web": {
       "output": "server",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/logo-navidad.png"
     },
     "plugins": [
       "expo-router",
-      [
-        "expo-splash-screen",
-        {
-          "backgroundColor": "#208AEF",
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 76
-        }
-      ]
+    [
+  "expo-splash-screen",
+  {
+    "backgroundColor": "#208AEF",
+    "image": "./assets/logo-navidad.png",
+    "imageWidth": 76
+  }
+]
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {
+        "asyncRoutes": {
+          "web": true
+        }
+      },
+      "eas": {
+        "projectId": "7ce86538-3c21-4524-8a04-f0bd7a1c5ed7"
+      }
     }
   }
 }
