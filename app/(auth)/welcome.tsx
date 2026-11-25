@@ -122,7 +122,7 @@ export default function WelcomeScreen() {
           ]}
         >
           <Image
-            source={require("../../assets/logo-navidad.png")}
+            source={require("../../assets/logosinf.png")}
             style={styles.logo}
             resizeMode="contain"
           />
