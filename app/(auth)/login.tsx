@@ -22,7 +22,6 @@ export default function LoginScreen() {
   const [password, setPassword] = useState("");
   const [mostrarPassword, setMostrarPassword] = useState(false);
 
- 
   // INICIO DE SESIÓN DE PRUEBA
   const iniciarSesion = () => {
     const correoCliente = "demo@cafilovers.com";
@@ -38,47 +37,33 @@ export default function LoginScreen() {
     const correoIngresado = correo.trim().toLowerCase();
 
     if (!correoIngresado || !password.trim()) {
-      Alert.alert(
-        "Campos incompletos",
-        "Ingresa tu correo y contraseña."
-      );
+      Alert.alert("Campos incompletos", "Ingresa tu correo y contraseña.");
       return;
     }
 
     // ACCESO CLIENTE
-    if (
-      correoIngresado === correoCliente &&
-      password === passwordCliente
-    ) {
+    if (correoIngresado === correoCliente && password === passwordCliente) {
       router.replace("/(tabs)");
       return;
     }
 
     // ACCESO EMPLEADO
-    if (
-      correoIngresado === correoEmpleado &&
-      password === passwordEmpleado
-    ) {
-      router.replace("/(employee)");
+    if (correoIngresado === correoEmpleado && password === passwordEmpleado) {
+      // router.replace("/(employee)");
       return;
     }
 
     // ACCESO ADMINISTRADOR
-    if (
-      correoIngresado === correoAdmin &&
-      password === passwordAdmin
-    ) {
-      router.replace("/(admin)");
+    if (correoIngresado === correoAdmin && password === passwordAdmin) {
+      //router.replace("/(admin)");
       return;
     }
 
     Alert.alert(
       "Datos incorrectos",
-      "El correo o la contraseña no son correctos."
+      "El correo o la contraseña no son correctos.",
     );
   };
-
-
 
   return (
     <LinearGradient
